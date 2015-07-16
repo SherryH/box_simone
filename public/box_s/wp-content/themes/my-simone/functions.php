@@ -9,10 +9,10 @@
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
-	$content_width = 640; /* pixels */
+	$content_width = 600; /* pixels */
 }
 
-if ( ! function_exists( 'my_simone_setup' ) ) :
+if ( ! function_exists( 'my_simone_setup' ) ) : //allows child theme to overwrite our function
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -46,20 +46,21 @@ function my_simone_setup() {
 	) );
 
 	// Enable support for Post Formats.
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	add_theme_support( 'post-formats', array( 'aside') );
 
 	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'my_simone_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
+	// add_theme_support( 'custom-background', apply_filters( 'my_simone_custom_background_args', array(
+	// 	'default-color' => 'ffffff',
+	// 	'default-image' => '',
+	// ) ) );
 
-	// Enable support for HTML5 markup.
+	// Enable support for HTML5 markup. they will be wrapped in html5 tags
 	add_theme_support( 'html5', array(
 		'comment-list',
 		'search-form',
 		'comment-form',
 		'gallery',
+		'caption',
 	) );
 }
 endif; // my_simone_setup
@@ -99,7 +100,7 @@ add_action( 'wp_enqueue_scripts', 'my_simone_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
